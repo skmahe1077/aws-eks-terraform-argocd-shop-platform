@@ -295,19 +295,6 @@ Refresh the Workshop Shop tab in your browser once the sync completes.
 | Application synced | `kubectl -n argocd get application workshop-shop` |
 | Pods healthy | `kubectl -n workshop-shop get pods` |
 
-## 90-minute workshop agenda
-
-| Time | Activity |
-|---|---|
-| 0:00-0:10 | Welcome; walk through the architecture diagram above |
-| 0:10-0:25 | Tour the Terraform code (`terraform/infrastructure`) - VPC, EKS, IAM/OIDC. Cluster is already provisioned - we read the code, not `apply` it live |
-| 0:25-0:35 | Explain GitOps and Argo CD; tour `argocd/application.yaml` and `gitops/` |
-| 0:35-0:40 | Verify the environment together: `kubectl get nodes`, open the Argo CD UI |
-| 0:40-0:55 | Live demo: edit a product price and the banner in `shop-app`, push, watch GitHub Actions build the image and update the manifest |
-| 0:55-1:05 | Watch Argo CD auto-sync; verify the change in the browser via port-forward |
-| 1:05-1:20 | Hands-on: students make their own small change (different price/banner text), or intentionally break the image marker and practice the troubleshooting table below |
-| 1:20-1:30 | Recap; walk through the cleanup steps; Q&A |
-
 ## Troubleshooting
 
 ### EKS
