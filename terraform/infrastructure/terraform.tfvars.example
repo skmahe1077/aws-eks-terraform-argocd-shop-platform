@@ -5,9 +5,9 @@ aws_region   = "eu-west-2"
 name_prefix  = "workshop-shop"
 cluster_name = "workshop-shop-eks"
 
-# The APPLICATION repository (shop-app), not the platform repository.
+# The APPLICATION repository (aws-eks-terraform-argocd-shop-app), not the platform repository.
 github_repository_owner  = "your-github-username-or-org"
-github_repository_name   = "shop-app"
+github_repository_name   = "aws-eks-terraform-argocd-shop-app"
 github_repository_branch = "main"
 
 # Leave empty unless this AWS account already has a GitHub Actions OIDC

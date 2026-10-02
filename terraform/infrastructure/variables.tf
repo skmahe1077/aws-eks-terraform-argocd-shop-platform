@@ -36,9 +36,9 @@ variable "github_repository_owner" {
 }
 
 variable "github_repository_name" {
-  description = "Name of the APPLICATION repository (shop-app), used to restrict the GitHub Actions IAM role's trust policy."
+  description = "Name of the APPLICATION repository (aws-eks-terraform-argocd-shop-app), used to restrict the GitHub Actions IAM role's trust policy."
   type        = string
-  default     = "shop-app"
+  default     = "aws-eks-terraform-argocd-shop-app"
 }
 
 variable "github_repository_branch" {
