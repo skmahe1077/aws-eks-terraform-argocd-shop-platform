@@ -1,0 +1,51 @@
+# Argo CD watches this file (and service.yaml) on the main branch and
+# keeps the cluster in sync with whatever is committed here.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workshop-shop
+  namespace: workshop-shop
+  labels:
+    app: workshop-shop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: workshop-shop
+  template:
+    metadata:
+      labels:
+        app: workshop-shop
+    spec:
+      containers:
+        - name: workshop-shop
+          # PLACEHOLDER - the shop-app GitHub Actions workflow replaces this
+          # value (and only this value) after every successful build, by
+          # matching the "# workshop-shop-image" marker comment below.
+          # Do not apply argocd/application.yaml until the workflow has run
+          # at least once and replaced this placeholder with a real ECR
+          # image URI.
+          image: REPLACE_WITH_ECR_IMAGE_URI # workshop-shop-image
+          ports:
+            - containerPort: 3000
+          # Small, fixed requests/limits - this is a demo app, not a
+          # production sizing exercise.
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 20

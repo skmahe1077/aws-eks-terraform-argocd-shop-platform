@@ -1,0 +1,6 @@
+# Copy this file to terraform.tfvars and fill in your own values.
+# These two values should match what you used (or what was output) in
+# terraform/infrastructure.
+
+aws_region   = "eu-west-2"
+cluster_name = "workshop-shop-eks"

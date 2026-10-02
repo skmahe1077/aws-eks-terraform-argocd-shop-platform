@@ -1,0 +1,37 @@
+# The Argo CD Application itself. Deliberately kept OUTSIDE the gitops/
+# directory, so Argo CD (which only watches gitops/) manages application
+# workloads only - never this Application resource, and never itself.
+#
+# Do not apply this file until the shop-app GitHub Actions workflow has
+# run at least once and replaced the placeholder image in
+# gitops/deployment.yaml with a real ECR image URI.
+#
+# Apply with:
+#   kubectl apply -f argocd/application.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: workshop-shop
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    # REQUIRED: replace with the public HTTPS URL of your shop-platform
+    # repository, e.g. https://github.com/your-org/shop-platform.git
+    repoURL: <PLATFORM_REPO_URL_PLACEHOLDER>
+    targetRevision: main
+    path: gitops
+
+  destination:
+    # "https://kubernetes.default.svc" means "the cluster Argo CD itself
+    # runs in" - there is no separate target cluster in this workshop.
+    server: https://kubernetes.default.svc
+    namespace: workshop-shop
+
+  syncPolicy:
+    automated:
+      prune: true # remove resources that are deleted from Git
+      selfHeal: true # revert any manual changes made directly in the cluster
+    syncOptions:
+      - CreateNamespace=true # create the workshop-shop namespace if missing

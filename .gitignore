@@ -1,0 +1,14 @@
+# Terraform local state - this workshop uses local state only.
+# A real project would use a remote backend (S3 + DynamoDB, Terraform
+# Cloud, etc.) so state is never only on one laptop.
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Real variable values - never commit secrets or account-specific values.
+*.tfvars
+!*.tfvars.example
+
+crash.log
+.DS_Store
