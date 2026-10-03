@@ -19,7 +19,7 @@ spec:
   source:
     # REQUIRED: replace with the public HTTPS URL of your shop-platform
     # repository, e.g. https://github.com/your-org/shop-platform.git
-    repoURL: <PLATFORM_REPO_URL_PLACEHOLDER>
+    repoURL: https://github.com/skmahe1077/aws-eks-terraform-argocd-shop-platform.git
     targetRevision: main
     path: gitops
 
