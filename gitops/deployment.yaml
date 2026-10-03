@@ -25,7 +25,7 @@ spec:
           # Do not apply argocd/application.yaml until the workflow has run
           # at least once and replaced this placeholder with a real ECR
           # image URI.
-          image: 038462791702.dkr.ecr.eu-west-2.amazonaws.com/workshop-shop:d52b269b3bb6909f9fc4932c7d9caca7daad0573 # workshop-shop-image
+          image: 038462791702.dkr.ecr.eu-west-2.amazonaws.com/workshop-shop:e3876c248c2bb35cb42cf6c927f804e0100511a5 # workshop-shop-image
           ports:
             - containerPort: 3000
           # Small, fixed requests/limits - this is a demo app, not a
